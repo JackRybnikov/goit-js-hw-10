@@ -23,3 +23,132 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+body{
+  padding: 36px 156px;
+}
+
+.link-pages {
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.greetings {
+  margin-bottom: 20px;
+}
+
+.h-timer{
+  margin-bottom: 20px;
+}
+
+/* Timer */
+
+#datetime-picker{
+  border: 1px solid #808080;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 400;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+#datetime-picker:disabled{
+  color: #808080;
+  border: 1px solid #808080;
+  border-radius: 4px;
+}
+
+.btn{
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(78, 117, 255, 1);
+  color: rgba(255, 255, 255, 1);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: rgba(108, 140, 255, 1);
+}
+
+.btn:disabled {
+  background-color: #CFCFCF;
+  color: #989898;
+}
+
+.timer{
+  display: flex;
+  column-gap: 24px;
+}
+
+.field{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.field > span:first-child{
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.field > span:last-child{
+  text-align: center;
+}
+
+.field-days{
+  min-width: 55px;
+}
+
+.field-hours{
+  min-width: 61px;
+}
+
+.field-minutes{
+  min-width: 76px;
+}
+
+.field-seconds{
+  min-width: 82px;
+}
+
+/* Snackbar */
+
+.form{
+  max-width: 360px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.form > label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form > label > input,
+.radio-input {
+  border: 1px solid #808080;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 400;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.radio-input{
+  padding: 8px 48px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  margin-bottom: 24px;
+}
+
+.radio-input > label {}
+
+.submit-btn{
+  width: 100%;
+}
