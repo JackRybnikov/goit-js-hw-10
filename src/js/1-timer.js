@@ -14,6 +14,7 @@ const secondsSpan = document.querySelector(".field-seconds .value");
 
 let userSelectedDate;
 const intervalIdArray = [];
+
 startBtn.setAttribute('disabled', true);
 
 /* Timer */
