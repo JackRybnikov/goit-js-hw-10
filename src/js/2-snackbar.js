@@ -8,7 +8,7 @@ const form = document.querySelector(".form");
 
 let shouldResolve = true;
 
-function fulfilledMessage(delay){
+function showFulfilledMessage(delay){
     iziToast.success({
         backgroundColor: '#B5EA7C',
         messageColor: '#fff',
@@ -17,7 +17,7 @@ function fulfilledMessage(delay){
     });
 };
 
-function rejectedMessage(delay){
+function showRejectedMessage(delay){
     iziToast.error({
         backgroundColor: '#FFBEBE',
         messageColor: '#fff',
@@ -29,7 +29,7 @@ function rejectedMessage(delay){
 
 
 
-const makePromise = ({ delay, shouldResolve = true }) => {
+const makePromise = ({ delay, shouldResolve }) => {
     return new Promise((resolve, reject) => {
          setTimeout(() => {
                   if(shouldResolve) {
@@ -57,11 +57,8 @@ form.addEventListener("submit", e => {
     const delay = inputDelay.value;
 
     makePromise({ delay, shouldResolve })
-    .then(value => fulfilledMessage(value))
-	.catch(error => rejectedMessage(error));
+    .then(value => showFulfilledMessage(value))
+	.catch(error => showRejectedMessage(error));
 
     form.reset();
 });
-
-    
-  

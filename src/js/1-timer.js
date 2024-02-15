@@ -13,8 +13,7 @@ const minutesSpan = document.querySelector(".field-minutes .value");
 const secondsSpan = document.querySelector(".field-seconds .value");
 
 let userSelectedDate;
-let counter;
-const arr = [];
+const intervalIdArray = [];
 startBtn.setAttribute('disabled', true);
 
 /* Timer */
@@ -39,6 +38,7 @@ function convertMs(ms) {
 }
 
 function spanFiller (ms) {
+    let counter = ms;
     if (ms >= 0){
         const { days, hours, minutes, seconds } = convertMs(ms);
 
@@ -49,48 +49,24 @@ function spanFiller (ms) {
         daysSpan.textContent = `${days}`.padStart(2, '0');
 
         counter -= 1000;
+        return counter;
     } else{
-        clearInterval(arr[0]);
-        arr.pop();
+        clearInterval(intervalIdArray[0]);
+        intervalIdArray.pop();
         inputDate.removeAttribute('disabled');
+        return counter;
     }
 }
-
-/*function changespanDate(milis) {
-    if (milis >= 0){
-        milis = milis / 1000;       // made seconds
-
-        const seconds = milis % 60;
-        secondsLabels.textContent = `${seconds}`;
-        milis = (milis - seconds) / 60;         // made minutes
-
-        const minutes = milis % 60;
-        minutesLabels.textContent = `${minutes}`;
-        milis = (milis - minutes) / 60;         // made hours
-
-        const hours = milis % 24;
-        hoursLabels.textContent = `${hours}`;
-        milis = (milis - hours) / 24;           // made days
-
-        daysLabels.textContent = `${milis}`;
-
-        counter -= 1000;
-    } else {
-        clearInterval(arr[0]);
-        arr.pop();
-        inputDate.removeAttribute('disabled');
-    }
-};*/
 
 /* Start button */
 
 startBtn.addEventListener("click", () => {
-    counter = userSelectedDate.getTime() - Date.now();
+    let counter = userSelectedDate.getTime() - Date.now();
     counter -= counter % 1000;
     const intervalId = setInterval(() => {
-        spanFiller(counter);
+        counter = spanFiller(counter);
     }, 1000);
-    arr.push(intervalId);
+    intervalIdArray.push(intervalId);
     startBtn.setAttribute('disabled', true);
     inputDate.setAttribute('disabled', true);
 });
@@ -106,6 +82,7 @@ const options = {
     onClose(selectedDates) {
         userSelectedDate = selectedDates[0];
         if (userSelectedDate.getTime() <= Date.now()) {
+            startBtn.setAttribute('disabled', true);
             iziToast.error({
                 iconUrl: '../img/Group.svg',
                 backgroundColor: '#EF4040',
