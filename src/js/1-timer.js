@@ -83,7 +83,6 @@ const options = {
     onClose(selectedDates) {
         userSelectedDate = selectedDates[0];
         if (userSelectedDate.getTime() <= Date.now()) {
-            startBtn.setAttribute('disabled', true);
             iziToast.error({
                 iconUrl: '../img/Group.svg',
                 backgroundColor: '#EF4040',
@@ -91,6 +90,7 @@ const options = {
                 position: 'topCenter',
                 message: 'Please choose a date in the future'
             });
+            startBtn.setAttribute('disabled', true);
         } else{
             startBtn.removeAttribute('disabled');
         }
